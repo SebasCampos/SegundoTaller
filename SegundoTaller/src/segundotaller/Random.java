@@ -123,12 +123,11 @@ public class Random extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Has Perdido!!!!");
             u.setVisible(true);
             dispose();
+            
         
         }
         
-        
-             
-        
+ 
         
     }//GEN-LAST:event_adiActionPerformed
 
@@ -136,6 +135,7 @@ public class Random extends javax.swing.JFrame {
         oculto.setText(Integer.toString(ale));
         trys.setText(Integer.toString(0)); 
     }//GEN-LAST:event_jButton1ActionPerformed
+    
     int ale = (int) (Math.random() * 10) + 1;
     int cont =1;
     /**

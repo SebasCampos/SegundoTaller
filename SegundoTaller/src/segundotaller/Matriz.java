@@ -5,6 +5,12 @@
  */
 package segundotaller;
 
+import java.awt.Color;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.border.Border;
+
 /**
  *
  * @author h
@@ -27,22 +33,157 @@ public class Matriz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tab = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        x = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        y = new javax.swing.JTextField();
+        gen = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout tabLayout = new javax.swing.GroupLayout(tab);
+        tab.setLayout(tabLayout);
+        tabLayout.setHorizontalGroup(
+            tabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 705, Short.MAX_VALUE)
+        );
+        tabLayout.setVerticalGroup(
+            tabLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 468, Short.MAX_VALUE)
+        );
+
+        jLabel1.setText("Filas");
+
+        jLabel2.setText("Columnas");
+
+        gen.setText("Generar");
+        gen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                genActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Salir");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(y, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(x)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addGap(15, 15, 15))))
+                        .addContainerGap())
+                    .addComponent(gen, javax.swing.GroupLayout.Alignment.TRAILING)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(177, 177, 177))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(tab, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(76, 76, 76)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(x, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addComponent(y, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addComponent(gen)))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void genActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_genActionPerformed
+        int f = Integer.parseInt(x.getText());
+        int c = Integer.parseInt(y.getText());
+        JLabel [][] etiq = new JLabel[f][c];
+        Integer [][] logic = new Integer[f][c];
+        for (int i = 0; i < f; i++) {
+            for (int j = 0; j < c; j++) {
+                int ale = (int) (Math.random() * 20) + 1;
+ 
+                logic[i][j] = (ale);
+            }
+        }
+            mostrar(etiq,logic);
+            JOptionPane.showMessageDialog(rootPane, "La cantidad de filas que comienzan con 5 es de:"+check(logic));
+    }//GEN-LAST:event_genActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Main o = new Main();
+        o.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    public int check(Integer[][]logica){
+        int cont = 0;
+        int f = Integer.parseInt(y.getText());
+        for (int i = 0; i < f ; i++) {
+            if(logica[0][i] == 5){
+                cont ++;
+            }
+            
+        }
+        return cont;
+    
+    }
+    
+    
+    public void mostrar(JLabel [][] etiquetas,Integer [][]logica){
+        int f = Integer.parseInt(x.getText());
+        int c = Integer.parseInt(y.getText());
+        int  xs = 75;
+        int  ys = 75;
+        Border border = BorderFactory.createLineBorder(Color.black, 1);
+        for (int i = 0; i < f; i++) {
+            for (int j = 0; j < c; j++) {
+                
+                etiquetas[i][j] = new JLabel();
+                etiquetas[i][j].setText(Integer.toString(logica[i][j]));
+                etiquetas[i][j].validate();
+                etiquetas[i][j].setBounds(xs, ys, 75, 75);
+                etiquetas[i][j].setBorder(border);  
+                tab.add(etiquetas[i][j]);
+             xs = xs +75;   
+            }
+            xs= 75;
+            ys = ys +75;
+        }
+    }
+    
+    
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -79,5 +220,12 @@ public class Matriz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton gen;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel tab;
+    private javax.swing.JTextField x;
+    private javax.swing.JTextField y;
     // End of variables declaration//GEN-END:variables
 }
